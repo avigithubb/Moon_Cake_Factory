@@ -16,8 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import render
+from django.urls import re_path
+from django.views.generic import TemplateView
+from django.views.decorators.csrf import csrf_exempt
+
+def index_view(request):
+    return render(request, "dist/index.html")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("myapp/", include("myapp.urls")),
+    re_path(r'^(?!api|admin|static|media).*$', csrf_exempt(TemplateView.as_view(template_name='index.html'))),
+
 ]
