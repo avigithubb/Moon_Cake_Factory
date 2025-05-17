@@ -1,0 +1,22 @@
+databases:
+  - name: mysitedb
+    plan: free
+    databaseName: mkf_db
+    user: avigithubb
+
+services:
+  - type: web
+    plan: free
+    name: mysite
+    runtime: python
+    buildCommand: './build.sh'
+    startCommand: 'python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker' 
+    envVars:
+      - key: postgresql://avigithubb:9QJYh6rZ7634amumTqpFUIk97iQK8BQl@dpg-d0k8bqnfte5s738f1ijg-a/mkf_db
+        fromDatabase:
+          name: mkf_db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
