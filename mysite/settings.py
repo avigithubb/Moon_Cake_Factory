@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-5)9egh7&*o&5dxzhor-$w6hi2n*i2qumrbrj4hu6%vs5rpi=x@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'moon-cake-factory-4.onrender.com']
 
 
 # Application definition
