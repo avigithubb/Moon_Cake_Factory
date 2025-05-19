@@ -2,7 +2,6 @@
 
 from django.db import migrations, models
 
-
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -10,9 +9,14 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterField(
+        migrations.RemoveField(
+            model_name='product',
+            name='review',
+        ),
+        migrations.AddField(
             model_name='product',
             name='review',
             field=models.JSONField(blank=True, default=list),
         ),
     ]
+

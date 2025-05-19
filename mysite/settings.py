@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://avigithubb:9QJYh6rZ7634amumTqpFUIk97iQK8BQl@dpg-d0k8bqnfte5s738f1ijg-a/mkf_db',
+        default='postgresql://avigithubb:9QJYh6rZ7634amumTqpFUIk97iQK8BQl@dpg-d0k8bqnfte5s738f1ijg-a.oregon-postgres.render.com/mkf_db',
         conn_max_age=600
     ),
     'sqlite': {
