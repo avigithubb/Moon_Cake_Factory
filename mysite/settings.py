@@ -31,7 +31,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'moon-cake-factory-4.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'moon-cake-factory-4.onrender.com', 'https://mysite-production-228e.up.railway.app']
 
 
 # Application definition
