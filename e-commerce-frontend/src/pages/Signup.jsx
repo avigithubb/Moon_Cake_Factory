@@ -26,7 +26,7 @@ function Signup(){
           phone: formData.get("phone")
         };
     
-        fetch("/myapp/sign-me-up/", {
+        fetch("/sign-me-up/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function Signup(){
           .then((resData) => {
             if (resData.message === "success") {
               setRegistered(resData);
-              fetch("/myapp/get_csrf_token/", {
+              fetch("/get_csrf_token/", {
                 credentials: "same-origin",
                 })
                 .then(() => {
