@@ -26,7 +26,7 @@ env.read_env()
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5)9egh7&*o&5dxzhor-$w6hi2n*i2qumrbrj4hu6%vs5rpi=x@'
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,7 +87,11 @@ DATABASES = {
     'default': dj_database_url.config(
         default='postgresql://avigithubb:9QJYh6rZ7634amumTqpFUIk97iQK8BQl@dpg-d0k8bqnfte5s738f1ijg-a/mkf_db',
         conn_max_age=600
-    )
+    ),
+    'sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -138,13 +142,13 @@ if not DEBUG:
     # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-SESSION_COOKIE_SAMESITE = "Strict"
-CSRF_COOKIE_SAMESITE = "Strict"
-CSRF_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = "Lax"
+CSRF_COOKIE_SAMESITE = "Lax"
+CSRF_COOKIE_HTTPONLY = False
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_AGE = 60 * 60 * 24
-# SESSION_COOKIE_SECURE = True 
-# CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True 
+CSRF_COOKIE_SECURE = True
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 CORS_ALLOW_CREDENTIALS = True
