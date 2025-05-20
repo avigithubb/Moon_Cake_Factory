@@ -178,6 +178,7 @@ CORS_ALLOW_HEADERS = (
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
+    "https://mysite-production-228e.up.railway.app",
 ]
 
 # Default primary key field type
