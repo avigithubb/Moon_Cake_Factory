@@ -21,7 +21,7 @@ function ProductDetails(props){
     const productKey = query.get("productId");
 
     useEffect(() =>{
-        fetch(`/myapp/get_product/${productKey}`, {
+        fetch(`/myapp/get_product/${productKey}/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function ProductDetails(props){
 
     useEffect(()=>{
         if(proData.length > 0){
-            fetch(`/myapp/get_category/${proData[0].category}`, {
+            fetch(`/myapp/get_category/${proData[0].category}/`, {
                 credentials: "same-origin"
             })
             .then(response => response.json())
