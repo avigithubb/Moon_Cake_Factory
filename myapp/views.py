@@ -59,11 +59,26 @@ def get_csrf_token(request):
 
 def myroot(request):
     if request.method == 'GET':
-        response = requests.get("https://fakestoreapi.com/products")
-        data = response.json()
-        return JsonResponse(data, safe=False)
-    else:
-        return JsonResponse({'error': 'Only GET allowed'}, status=405)
+        try:
+            response = requests.get("https://fakestoreapi.com/products")
+            data = response.json()
+
+            for item in data:
+                if not Product.objects.filter(name=item['title']).exists():
+                    Product.objects.create(
+                        name=item['title'],
+                        price=item['price'],
+                        description=item['description'],
+                        category=item['category'],
+                        main_image=item['image'],  # ensure this is a URLField
+                        rating=item.get('rating', {}).get('rate', 0),
+                    )
+            return JsonResponse({'message': 'Data imported successfully'}, status=201)
+        
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+
+    return JsonResponse({'error': 'Only GET allowed'}, status=405)
     
 def get_product(request, product_id):
     my_product = get_list_or_404(Product, id=product_id)
