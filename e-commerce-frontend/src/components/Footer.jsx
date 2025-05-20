@@ -1,5 +1,5 @@
 import React from "react";
-import glob from "../assets/glob";
+import glob from "../assets/glob.jpg";
 
 function Footer(){
     return (
